@@ -1,0 +1,22 @@
+
+.margetop1{
+
+  padding-top:150px;
+}
+.align1{
+  text-align:center;
+}
+.encercle1{
+  border-radius: 200px;
+}
+.encercle2{
+  border-radius: 300px;
+}
+.bgimg{
+  height:900px;
+  background-image: url("photo.jpg");
+  background-size: 100%;
+  background-size: cover;
+}
+
+

@@ -1,0 +1,79 @@
+.height1{
+
+  height:50%;
+}
+.margeleft1{
+
+  margin-left: 150px;
+}
+.color1{
+  color:#F0C300;
+
+}
+.texts1{
+
+  font-size:70px;
+}
+.texts2{
+
+  font-size:20px;
+}
+.texts3{
+
+  font-size:20px;
+}
+.bg-color1{
+
+
+  background-color:#EFEFEF
+}
+
+.font1{
+  font-family: system-ui;
+  color:whitesmoke;
+}
+.button {
+
+  border: none;
+
+  padding: 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.marget{
+
+  margin-top:75px;
+
+}
+.margeb{
+
+  margin-bottom:60px;
+
+}
+
+.button4 {border-radius: 80px;}
+
+.margeleft2{
+
+  margin-left:600px;
+}
+.margeleft3{
+
+  margin-left:100px;
+}
+
+.margeleft5{
+
+  margin-left:900px;
+}
+.bgimg2{
+  height:2000px;
+  background-image: url("photo4.jpg");
+  background-size: 120%;
+  background-size: cover;
+
+}

@@ -1,0 +1,253 @@
+<body class="bgimg2 container-fluid">
+<div class="container">
+
+  <nav class="navbar nav pt-5 bg-dark h-75 d-block">
+    <div class="row ">
+      <div class="navbar-brand  text-light ml-5 font-weight-bold d-block mt-4 mb-2 texts1"><p class="d-inline-block color1">E</p>nsa <p class="d-inline-block color1">P</p>ay</div>
+    </div>
+    <div class="row mt-3  ">
+      <div class="col-3 h5 text-light margeleft1 "><a class="btn text-light" routerLink="/agenttr">Gérer agents</a></div>
+
+      <div class="col-3 h5  color1">Administrateur</div>
+
+      <button class="mb-3 margeleft3 btn btn-outline-primary" (click)="logout()">logout</button>
+    </div>
+  </nav>
+</div>
+<!--header au dessus-->
+<!--liste enregistrements-->
+<div class="container my-5"  >
+
+  <div class="card bg-color1">
+
+    <div *ngIf="listeenr && trainotrai">
+    <div class="card-header font-weight-bold h4"> Les demandes reçues</div>
+
+    <div class="card-body">
+      <div class="margeleft5" ><button class="btn btn-outline-warning" (click)="traitnontrait()"> Non traité/Traité</button> </div>
+  <tr class="table mt-5">
+    <th class="h4">Id</th>
+    <th class="h4" >Nom</th>
+    <th class="h4" >Prenom</th>
+    <th class="h4" >Cin</th>
+    <th  class="h4">Edit</th>
+  </tr>
+      <tr *ngFor="let p of pageofenregistrements">
+        <th class="text-dark font-weight-bolder h4">{{p.id}}</th>
+        <td class="text-dark font-italic h6">{{p.nom}}</td>
+        <td class="text-dark font-italic h6">{{p.prenom}}</td>
+        <td class="text-dark font-italic h6" >{{p.numcin}}</td>
+        <td class="text-dark font-italic h6" ><a class="btn h6" (click)="toeditenr(p)"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-receipt-cutoff" viewBox="0 0 16 16">
+          <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zM11.5 4a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
+          <path d="M2.354.646a.5.5 0 0 0-.801.13l-.5 1A.5.5 0 0 0 1 2v13H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H15V2a.5.5 0 0 0-.053-.224l-.5-1a.5.5 0 0 0-.8-.13L13 1.293l-.646-.647a.5.5 0 0 0-.708 0L11 1.293l-.646-.647a.5.5 0 0 0-.708 0L9 1.293 8.354.646a.5.5 0 0 0-.708 0L7 1.293 6.354.646a.5.5 0 0 0-.708 0L5 1.293 4.354.646a.5.5 0 0 0-.708 0L3 1.293 2.354.646zm-.217 1.198l.51.51a.5.5 0 0 0 .707 0L4 1.707l.646.647a.5.5 0 0 0 .708 0L6 1.707l.646.647a.5.5 0 0 0 .708 0L8 1.707l.646.647a.5.5 0 0 0 .708 0L10 1.707l.646.647a.5.5 0 0 0 .708 0L12 1.707l.646.647a.5.5 0 0 0 .708 0l.509-.51.137.274V15H2V2.118l.137-.274z"/>
+        </svg></a></td>
+        <td (click)="deleteenr(p)"><a><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+          <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+        </svg></a></td>
+      </tr>
+    </div>
+      <div  class="margeleft2">
+        <jw-pagination  [items]="enregistrments" (changePage)="onChangePagee($event)" ></jw-pagination>
+      </div>
+  </div>
+    <!--liste enregistrement au dessus-->
+    <!--traité-->
+
+    <div *ngIf="listeenr && !trainotrai">
+      <div class="card-header font-weight-bold h4"> Les demandes mentionnés traités</div>
+
+      <div class="card-body">
+        <div class="margeleft5" ><button class="btn btn-outline-warning" (click)="traitnontrait()"> Non traité/Traité</button> </div>
+        <tr class="table mt-5">
+          <th class="h4">Id</th>
+          <th class="h4" >Nom</th>
+          <th class="h4" >Prenom</th>
+          <th class="h4" >Cin</th>
+          <th  class="h4">Edit</th>
+        </tr>
+        <tr *ngFor="let p of pageofenregistrements">
+          <th class="text-dark font-weight-bolder h4">{{p.id}}</th>
+          <td class="text-dark font-italic h6">{{p.nom}}</td>
+          <td class="text-dark font-italic h6">{{p.prenom}}</td>
+          <td class="text-dark font-italic h6" >{{p.numcin}}</td>
+          <td class="text-dark font-italic h6" ><a class="btn h6" (click)="toeditenr(p)"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-receipt-cutoff" viewBox="0 0 16 16">
+            <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zM11.5 4a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
+            <path d="M2.354.646a.5.5 0 0 0-.801.13l-.5 1A.5.5 0 0 0 1 2v13H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H15V2a.5.5 0 0 0-.053-.224l-.5-1a.5.5 0 0 0-.8-.13L13 1.293l-.646-.647a.5.5 0 0 0-.708 0L11 1.293l-.646-.647a.5.5 0 0 0-.708 0L9 1.293 8.354.646a.5.5 0 0 0-.708 0L7 1.293 6.354.646a.5.5 0 0 0-.708 0L5 1.293 4.354.646a.5.5 0 0 0-.708 0L3 1.293 2.354.646zm-.217 1.198l.51.51a.5.5 0 0 0 .707 0L4 1.707l.646.647a.5.5 0 0 0 .708 0L6 1.707l.646.647a.5.5 0 0 0 .708 0L8 1.707l.646.647a.5.5 0 0 0 .708 0L10 1.707l.646.647a.5.5 0 0 0 .708 0L12 1.707l.646.647a.5.5 0 0 0 .708 0l.509-.51.137.274V15H2V2.118l.137-.274z"/>
+          </svg></a></td>
+          <td (click)="deleteenr(p)"><a><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg></a></td>
+        </tr>
+      </div>
+      <div  class="margeleft2">
+        <jw-pagination  [items]="enregistrments" (changePage)="onChangePagee($event)" ></jw-pagination>
+      </div>
+    </div>
+        <!--traité au dessus-->
+
+    <!--editer enregitrements-->
+    <div class="container my-5 " *ngIf="editerenr" >
+      <div class="card bg-dark">
+        <div class="card-header font-weight-bold my-3 color1 texts3 bg-dark"> Profile du candidat séléctionné</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6  texts2  font1 py-3"> <p class="text-light h4 d-inline-block">Nom:</p>  <p class="text-info h4 d-inline-block" >.   {{currentenr.nom}}</p></div>
+            <div class="col-6 texts2 font1 py-3"><p class="text-light h4 d-inline-block">Prenom:</p>  <p class="text-info h4 d-inline-block " >.   {{currentenr.prenom}}</p></div>
+          </div>
+          <div class="row">
+            <div class="col-5">
+              <div class="row  texts2 font1 py-3 ml-1"><p class="text-light h4 d-inline-block">Tel:</p>  <p class="text-info h4 d-inline-block " >.   {{currentenr.tel}}</p></div>
+              <div class="row texts2  font1 py-3 ml-1 "><p class="text-light h4 d-inline-block">Email:</p>  <p class="text-info h4 d-inline-block " >.   {{currentenr.email}}</p></div>
+              <div class="row texts2 font1 py-3 ml-1"><p class="text-light h4 d-inline-block">Numcin:</p>  <p class="text-info h4 d-inline-block " >.   {{currentenr.numcin}}</p></div>
+            </div>
+            <div class="col-7 texts2  "><p class="text-light h4 d-inline-block">Carte cin:</p><img src="{{currentenr.urlcin}}"></div>
+
+          </div>
+
+          <button class="btn-lg btn-outline-danger mt-5" (click)="tocreateagent()" >Creer</button>
+
+          <button class="btn-lg btn-outline-success ml-2 mt-5" (click)="tolistenr()" >Retour</button>
+          <button class="btn-lg btn-outline-primary ml-2 mt-5" (click)="traited()"  *ngIf="trainotrai" >Mentionner comme traité</button>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!--editer enregistrements au dessus-->
+
+    <!--creer agent-->
+
+
+    <div class="card-header text-dark font-weight-bold h4 " *ngIf="creeragentt" >Créer un agent pour Ensa Pay</div>
+    <div class="card-body bg-light" *ngIf="creeragentt" >
+
+      <form>
+        <div class="form-group">
+          <label class="form-check-label">Nom:</label>
+          <input type="text" name="nom" class="form-control" [(ngModel)]="agent.nom">
+        </div>
+        <div class="form-group">
+          <label class="form-check-label">Prenom</label>
+          <input type="text" name="prenom" class="form-control" [(ngModel)]="agent.prenom">
+        </div>
+        <div class="form-group">
+          <label class="form-check-label">Email</label>
+          <input type="text" name="email" class="form-control" [(ngModel)]="agent.email">
+        </div>
+        <div class="form-group">
+          <label class="form-check-label">Tel</label>
+          <input type="text" name="tel" class="form-control" [(ngModel)]="agent.tel">
+        </div>
+        <div class="form-group">
+          <label class="form-check-label">No Cin</label>
+          <input type="text" name="numcin" class="form-control" [(ngModel)]="agent.numcin">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Remarques à ajouter a l'email</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+        </div>
+        <div class="form-group">
+
+          <button class="btn-lg btn-outline-danger mt-5" (click)="creeragent()" >Creer</button>
+          <button class="btn-lg btn-outline-success mt-5 ml-2" (click)="retour3()" >Retour</button>
+          <div  class="alerte alert-info mt-5" *ngIf="agentcreated">  {{elementcree.message}}</div>
+        </div>
+
+      </form>
+
+
+    </div>
+
+    <!--creer client  au dessus-->
+
+</div>
+</div>
+
+
+<!--liste agents-->
+<div class="container my-5"  >
+  <div class="card bg-color1 ">
+ <div *ngIf="listeagent">
+    <div class="card-header font-weight-bold h4" *ngIf="listagentcuurentadmin"> Les agents que j'ai crée</div>
+    <div class="card-header font-weight-bold h4" *ngIf="listeallagent"> Tous les agents de ensa pays</div>
+    <div class="card-body row">
+      <div class="col-4">
+        <div class="marget">
+          <button class="btn btn-light button button4  text-dark h4" (click)="getagentsofcurrentuser()">Mes agents</button>
+
+        </div>
+        <div class="mt-5 margeb">
+          <button class="btn btn-light button button4 text-dark h4  " (click)="getallagents()">Tout agent</button>
+        </div>
+
+      </div>
+      <div class="col-8" *ngIf="listeallagent || listagentcuurentadmin">
+      <tr class="table mt-5">
+        <th class="h4">Id</th>
+        <th class="h4" >Nom</th>
+        <th class="h4" >Prenom</th>
+        <th class="h4" >Cin</th>
+        <th  class="h4">Edit</th>
+      </tr>
+      <tr *ngFor="let p of pageofagents">
+        <th class="text-dark font-weight-bolder h6">{{p.id}}</th>
+        <td class="text-dark font-italic h6">{{p.nom}}</td>
+        <td class="text-dark font-italic h6">{{p.prenom}}</td>
+        <td class="text-dark font-italic h6" >{{p.numcin}}</td>
+        <td class="text-dark font-italic h6" ><a class="btn h6" (click)="toeditagent(p)"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-receipt-cutoff" viewBox="0 0 16 16">
+          <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zM11.5 4a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
+          <path d="M2.354.646a.5.5 0 0 0-.801.13l-.5 1A.5.5 0 0 0 1 2v13H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H15V2a.5.5 0 0 0-.053-.224l-.5-1a.5.5 0 0 0-.8-.13L13 1.293l-.646-.647a.5.5 0 0 0-.708 0L11 1.293l-.646-.647a.5.5 0 0 0-.708 0L9 1.293 8.354.646a.5.5 0 0 0-.708 0L7 1.293 6.354.646a.5.5 0 0 0-.708 0L5 1.293 4.354.646a.5.5 0 0 0-.708 0L3 1.293 2.354.646zm-.217 1.198l.51.51a.5.5 0 0 0 .707 0L4 1.707l.646.647a.5.5 0 0 0 .708 0L6 1.707l.646.647a.5.5 0 0 0 .708 0L8 1.707l.646.647a.5.5 0 0 0 .708 0L10 1.707l.646.647a.5.5 0 0 0 .708 0L12 1.707l.646.647a.5.5 0 0 0 .708 0l.509-.51.137.274V15H2V2.118l.137-.274z"/>
+        </svg></a></td>
+      </tr>
+    </div>
+    </div>
+   <div class="margeleft2">
+     <jw-pagination  [items]="listeagents" (changePage)="onChangePagea($event)" ></jw-pagination>
+   </div>
+ </div>
+    <!--liste agents au dessus -->
+    <!--editer agent-->
+    <div class="container my-5 " *ngIf="editeragent"  >
+      <div class="card bg-dark" >
+        <div class="card-header font-weight-bold my-3 color1 texts3 bg-dark"> Un des agents de Ensa Pay</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6  texts2  font1 py-3"> <p class="text-light h4 d-inline-block">Nom:</p>  <p class="text-info h4 d-inline-block" >.   {{currentagent.nom}}</p></div>
+            <div class="col-6 texts2 font1 py-3"><p class="text-light h4 d-inline-block">Prenom:</p>  <p class="text-info h4 d-inline-block " >.   {{currentagent.prenom}}</p></div>
+          </div>
+          <div class="row">
+            <div class="col-5">
+              <div class="row  texts2 font1 py-3 ml-1"><p class="text-light h4 d-inline-block">Tel:</p>  <p class="text-info h4 d-inline-block " >.   {{currentagent.tel}}</p></div>
+              <div class="row texts2  font1 py-3 ml-1 "><p class="text-light h4 d-inline-block">Email:</p>  <p class="text-info h4 d-inline-block " >.   {{currentagent.email}}</p></div>
+              <div class="row texts2 font1 py-3 ml-1"><p class="text-light h4 d-inline-block">Numcin:</p>  <p class="text-info h4 d-inline-block " >.   {{currentagent.numcin}}</p></div>
+            </div>
+            <div class="col-7 texts2  "><p class="text-light h4 d-inline-block">Carte cin:</p><img src="{{currentagent.urlcin}}"></div>
+          </div>
+          <div class="form-group col-6">
+            <label for="exampleFormControlTextare" class="text-light h4 ">Ecrire email</label>
+            <textarea class="form-control" id="exampleFormControlTextare" rows="3" ></textarea>
+            <div  class="alerte text-dark alert-info mt-5" *ngIf="emailsend"> on a: {{elementcree.message}}  </div>
+          </div>
+
+          <button class="btn-lg btn-outline-danger  ml-2 mt-5" (click)="deleteagent()" >Supprimer cet agent</button>
+          <button class="btn-lg btn-outline-warning ml-2 mt-5" (click)="envoyeremail()">Envoyer email</button>
+
+          <button class="btn-lg btn-outline-success ml-2 mt-5" (click)="tolisteagent()" >Retour</button>
+
+
+        </div>
+
+      </div>
+
+    </div>
+    <!--editer agent au dessus-->
+
+
+  </div>
+  </div>
+
+
+</body>

@@ -1,0 +1,204 @@
+<body class="bgimg container-fluid">
+
+<!--facade1-->
+<div class="container" *ngIf="facade1">
+  <div  class="row margetop1  h2" >
+    <div class="col-6 border-dark p-5  align1 bg-success encercle1 " (click)="tofacade2()">
+
+      Je suis un admin
+    </div>
+    <div class="col-6 p-5 align1 bg-danger encercle1" (click)="tofacade3()">
+     Je suis un agent
+
+    </div>
+
+
+  </div>
+  <div  class="row mt-3 h2 p-5 align1" (click)="tofacade4()"  >
+ <div class=" col-12 p-5 align1 bg-primary encercle2">
+   Postuler pour devenir agent
+
+ </div>
+
+  </div>
+  <div  class="row mt-3 h2 p-1 align1" (click)="tofacade7()"  >
+    <div class=" col-12 p-5 align1 bg-warning encercle2">
+      Devenir client de Ensa Pay
+
+    </div>
+
+  </div>
+
+</div>
+<!--facade1 au dessus-->
+<div class="container margetop1 ">
+
+<!--facade2-->
+<div class=" card bg-light " *ngIf="facade2">
+  <div class="card-body ">
+    <p class="h4 text-secondary pb-4">Admin</p>
+    <form>
+      <div class="form-group">
+        <label class="form-check-label">Username:</label>
+      <input type="text" name="username" class="form-control" [(ngModel)]="admin.username">
+      </div>
+      <div class="form-group">
+        <label class="form-check-label">Password:</label>
+        <input type="password" name="password" class="form-control" [(ngModel)]="admin.password">
+      </div>
+      <div class="form-group">
+
+        <button class="btn-danger btn mt-3 " routerLink="/agenttr" (click)="loginadmin()">Signin</button>
+        <button class="btn-success btn  mt-3 ml-1" (click)="tofacade1()"> Retour</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+<!--facade2 au dessus-->
+<!--facade3-->
+  <div class=" card bg-light  " *ngIf="facade3">
+
+    <div class="card-body ">
+      <p class="h4 text-secondary pb-4">Agent</p>
+      <form>
+        <div class="form-group">
+          <label class="form-check-label">Username:</label>
+          <input type="text" name="username" class="form-control" [(ngModel)]="agent.username">
+        </div>
+        <div class="form-group">
+          <label class="form-check-label">Password:</label>
+          <input type="password" name="password" class="form-control" [(ngModel)]="agent.password">
+        </div>
+        <div class="form-group">
+
+          <button class="btn-danger btn mt-3 " routerLink="/clienttr" (click)="loginagent()">Signin</button>
+          <button class="btn-success btn  mt-3 ml-1" (click)="tofacade1()"> Retour</button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+<!--facade3 au dessus-->
+
+<!--facade4-->
+
+  <div class=" card bg-light  " *ngIf="facade4">
+
+    <div class="card-body ">
+      <p class="h4 text-secondary pb-4">Postuler pour devenir agent Ensa Pay</p>
+      <form >
+        <div class="form-group">
+          <label class="form-check-label">Nom:</label>
+          <input type="text" name="nom" class="form-control" [(ngModel)]="form_enr.nom">
+        </div>
+        <div class="form-group">
+          <label class="form-check-label">Prenom:</label>
+          <input type="text" name="prenom" class="form-control" [(ngModel)]="form_enr.prenom">
+        </div>
+        <div class="form-group">
+          <div class="form-group">
+            <label class="form-check-label">Email:</label>
+            <input type="text" name="email" class="form-control" [(ngModel)]="form_enr.email">
+          </div>
+          <div class="form-group">
+            <label class="form-check-label">No:telephone:</label>
+            <input type="text" name="tel" class="form-control" [(ngModel)]="form_enr.tel">
+          </div>
+          <div class="form-group">
+            <label class="form-check-label">No:cin:</label>
+            <input type="text" name="numcin" class="form-control" [(ngModel)]="form_enr.numcin">
+          </div>
+
+            <label class="form-check-label">Upload cin:</label>
+            <input class=" form-control-lg "  id="userFile" (change)="onSelectFile($event)" type="file" />
+
+
+          <button class=" btn d-block btn-danger mt-3 " (click)="creerenre()">Demander poste</button>
+          <button class="btn-success btn mt-1" (click)="tofacade1()"> Retour</button>
+
+          <div class="alert alert-warning" *ngIf="facade5">
+            Monsieur Madame {{elementcree.nom}} {{elementcree.prenom}}
+            votre candidature a été ajouté vous recevrer un sms pour toute nouvelle information.
+          </div>
+          <div class="alert alert-danger" *ngIf="facade6">
+            Merci de reessayer une érreur s'est produite
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+<!--facade4 au dessus-->
+  <!--facade7-->
+
+  <div class=" card bg-light  " *ngIf="facade7">
+
+    <div class="card-body ">
+      <p class="h4 text-secondary pb-4">Postuler pour devenir client Ensa Pay</p>
+      <form >
+        <div class="form-group">
+          <label class="form-check-label">Nom:</label>
+          <input type="text" name="nom" class="form-control" [(ngModel)]="form_enr.nom">
+        </div>
+        <div class="form-group">
+          <label class="form-check-label">Prenom:</label>
+          <input type="text" name="prenom" class="form-control" [(ngModel)]="form_enr.prenom">
+        </div>
+        <div class="form-group">
+          <div class="form-group">
+            <label class="form-check-label">Email:</label>
+            <input type="text" name="email" class="form-control" [(ngModel)]="form_enr.email">
+          </div>
+          <div class="form-group">
+            <label class="form-check-label">No:telephone:</label>
+            <input type="text" name="tel" class="form-control" [(ngModel)]="form_enr.tel">
+          </div>
+          <div class="form-group">
+            <label class="form-check-label">No:cin:</label>
+            <input type="text" name="numcin" class="form-control" [(ngModel)]="form_enr.numcin">
+          </div>
+
+
+
+
+          <button class=" btn d-block btn-danger mt-3 " (click)="creerenreforclient()">Demander poste</button>
+          <button class="btn-success btn mt-1" (click)="tofacade1()"> Retour</button>
+
+          <div class="alert alert-warning" *ngIf="facade5">
+            Monsieur Madame {{elementcree.nom}} {{elementcree.prenom}}
+            votre candidature a été ajouté vous recevrer un sms pour toute nouvelle information.
+          </div>
+          <div class="alert alert-danger" *ngIf="facade6">
+            Merci de reessayer une érreur s'est produite
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!--facade7 au dessus-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
