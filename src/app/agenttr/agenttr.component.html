@@ -145,6 +145,9 @@
           <label class="form-check-label">No Cin</label>
           <input type="text" name="numcin" class="form-control" [(ngModel)]="agent.numcin">
         </div>
+        <label class="form-check-label">Upload cin:</label>
+        <input class=" form-control-lg "  id="userFile" (change)="onSelectFile($event)" type="file" />
+
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Remarques à ajouter a l'email</label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
@@ -152,7 +155,7 @@
         <div class="form-group">
 
           <button class="btn-lg btn-outline-danger mt-5" (click)="creeragent()" >Creer</button>
-          <button class="btn-lg btn-outline-success mt-5 ml-2" (click)="retour3()" >Retour</button>
+       <!--   <button class="btn-lg btn-outline-success mt-5 ml-2" (click)="retour3()" >Retour</button> -->
           <div  class="alerte alert-info mt-5" *ngIf="agentcreated">  {{elementcree.message}}</div>
         </div>
 

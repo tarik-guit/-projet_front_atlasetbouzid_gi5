@@ -36,10 +36,10 @@ export class ClienttrComponent implements OnInit {
   useraidee:useraide=new useraide();
   pageofenregistrements:any=[];
   editerenr:boolean=false;
-  listeenr:boolean=true;
-  trainotrai:boolean=true;
+  listeenr:boolean=false;
+  trainotrai:boolean=false;
   currentenr:any=[];
-  creerclientt:boolean=false;
+  creerclientt:boolean=true;
 
 
   compt:compte=new compte();
@@ -146,7 +146,7 @@ export class ClienttrComponent implements OnInit {
 
     retour3(){this.creerclientt=false;this.editerenr=true;this.listeenr=false;}
 
-    deleteenr(p){if(window.confirm("Voulez vous créer compte")){this.clienttserv.deleteenr(p);
+    deleteenr(p){if(window.confirm("Voulez vous supprimer cet demande")){this.clienttserv.deleteenr(p);
       this.enregistrments.splice(this.enregistrments.indexOf(p),1);this.pageofenregistrements.splice(this.pageofenregistrements.indexOf(p),1);
 
     }}

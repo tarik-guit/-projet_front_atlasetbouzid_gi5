@@ -18,7 +18,7 @@ export class AgenttrComponent implements OnInit {
   listeallagent:boolean=false;
   listagentcuurentadmin:boolean=false;
   editerenr:boolean=false;
-  listeenr:boolean=true;
+  listeenr:boolean=false;
   listeagent:boolean=true;
   enregistrments:any=[];
   currentenr:any=[];
@@ -31,10 +31,13 @@ export class AgenttrComponent implements OnInit {
   pageofenregistrements:any=[];
   pageofagents:any=[];
   emailsend:boolean=false;
-  trainotrai:boolean=true;
-  creeragentt:boolean=false;
+  trainotrai:boolean=false;
+  creeragentt:boolean=true;
+  file:any=[];
+  fileuri:any=[];
+  fileInformation:any=[];
   constructor(private agentrserv:agenttrserv,private http:HttpClient,private auth:AuthenticationService,
-              private auth2:AuthenticationService2,private clienttserv:clienttrserv) { }
+              private auth2:AuthenticationService2,private clienttserv:clienttrserv,private httpClient:HttpClient) { }
 
   ngOnInit(): void {
     this.getenrengistrements();
@@ -125,9 +128,30 @@ traited(){this.enregistrementtraite(this.currentenr);
 
      traitnontrait(){if(this.trainotrai){this.trainotrai=false;this.getenrengistrementstraite();}else{this.trainotrai=true;this.getenrengistrements()}}
 
-  deleteenr(p){if(window.confirm("Voulez vous créer compte")){this.agentrserv.deleteenr(p);
+  deleteenr(p){if(window.confirm("Voulez vous supprimer cet demande")){this.agentrserv.deleteenr(p);
     this.enregistrments.splice(this.enregistrments.indexOf(p),1);this.pageofenregistrements.splice(this.pageofenregistrements.indexOf(p),1);
 
   }}
 
+
+  onSelectFile(event) {
+    if(event.target.files && event.target.files.length > 0) {
+      this.file = event.target.files[0];
+      this.fileInformation = null;
+    }
+  }
+
+  sendFile() {
+    const file: FormData = new FormData();
+    file.append(`file`, this.file, this.file.name );
+    // Pas d'ajout d'header exposant le content-type, le framework le fait pour vous.
+    this.httpClient.post(
+      'http://localhost:8001/uploadFile',
+      file
+    ).subscribe(value => {
+      this.fileuri=value;
+      this.agent.urlcin=this.fileuri.fileDownloadUri;
+
+    },err=>{})
+  }
 }

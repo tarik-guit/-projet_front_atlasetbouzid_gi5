@@ -7,6 +7,7 @@ import {facadeserv} from "../../services/facadeserv";
 import {AuthenticationService} from "../securityjwt/services/AuthenticationService";
 import {AuthenticationService2} from "../securityjwt/services/AuthenticationService2";
 import {clienttrserv} from "../../services/clienttrserv";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-facade',
@@ -30,7 +31,7 @@ export class FacadeComponent implements OnInit {
   elementcree:any=[];
 
   constructor(private httpClient:HttpClient,public facaserv:facadeserv,private auth:AuthenticationService,
-              private auth2:AuthenticationService2,private clienttserv:clienttrserv) { }
+              private auth2:AuthenticationService2,private clienttserv:clienttrserv,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -69,9 +70,9 @@ creerenre(){
   }
 
 
-loginadmin(){this.auth2.login(this.admin.username,this.admin.password);}
+loginadmin(){this.auth2.login(this.admin.username,this.admin.password);this.router.navigate(['/', 'agenttr']);}
 
-loginagent(){this.auth.login(this.agent.username,this.agent.password);}
+loginagent(){this.auth.login(this.agent.username,this.agent.password);this.router.navigate(['/', 'clienttr']);}
 
 
   creerenreforclient(){

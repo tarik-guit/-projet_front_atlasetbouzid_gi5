@@ -10,8 +10,8 @@ import {AuthGuard2} from "./securityjwt/aide/AuthGuard2";
 const routes: Routes = [{path:'facade' ,component:FacadeComponent  },
   {path:'agenttr' ,component:AgenttrComponent ,canActivate: [AuthGuard2] },
   {path:'clienttr' ,component:ClienttrComponent,canActivate: [AuthGuard]  },
-  {path:'' ,component:AgenttrComponent ,canActivate: [AuthGuard2]},
-  {path:'' ,component:ClienttrComponent ,canActivate: [AuthGuard]}
+ // {path:'' ,component:AgenttrComponent ,canActivate: [AuthGuard2]},
+ // {path:'' ,component:ClienttrComponent ,canActivate: [AuthGuard]}
   ];
 
 @NgModule({
